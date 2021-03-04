@@ -1,5 +1,6 @@
 {
   "dependencies": {
-    "pdfkit": "^0.11.0"
+    "pdfkit": "^0.11.0",
+    "signature_pad": "^3.0.0-beta.4"
   }
 }

@@ -1,0 +1,61 @@
+url: https://drave.dev
+baseurl: ""
+
+# Site settings
+title: Drave Développement
+email: draveurs@drave.dev
+
+description: |- #"Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description."
+    Communauté de Développement Numérique Collaboratif dédié au soutient d'un Gouvernement du Québec Ouvert
+
+# Team names, titles and social links
+people:
+- name: Ricky Ng-Adam
+  pic: 1
+  position: Maître-Draveur
+  social:
+    - title: twitter
+      url: https://twitter.com/rngadam
+    - title: facebook
+      url: https://www.facebook.com/rngadam
+    - title: github
+      url: https://github.com/rngadam
+    - title: linkedin
+      url:
+
+- name: Jérémy Viau-Trudel
+  pic: 2
+  position: Maître-Draveur
+  social:
+    - title: twitter
+      url: https://twitter.com/jvtrudel
+    - title: facebook
+      url: https://facebook.com/jvtrudel
+    - title: github
+      url: https://github.com/jvtrudel
+    - title: linkedin
+      url: https://www.linkedin.com/in/jvtrudel/
+
+# Social networks usernames (many more available: google-plus, flickr, dribbble, pinterest, instagram, tumblr, linkedin, etc.)
+social:
+  - title: mastodon
+    url: https://mastodon.fedi.quebec/@dravedev
+  - title: twitter
+    url: https://twitter.com/dravedev
+  - title: facebook
+    url: https://facebook.com/dravedev
+  - title: github
+    url: https://github.com/dravedev
+
+# Postal address (add as many lines as necessary)
+address:
+  - line: Québec
+  - line: Québec
+
+# Build settings
+markdown: kramdown
+permalink: pretty
+
+exclude:
+  - README.md
+  - bin
