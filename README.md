@@ -10,7 +10,7 @@ needs Docker installed and running
 ## install
 
 ```
-./install.sh
+./setup.sh
 ```
 
 ## run

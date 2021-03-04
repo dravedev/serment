@@ -5,3 +5,49 @@ layout: style
 body {
     padding-top: 110px;
 }
+
+.serment {
+    margin: 0 auto;
+}
+
+@media screen and (max-width: 768px) {
+    .serment {
+        margin: auto 15px;
+    }
+}
+
+
+@media screen and (min-width: 768px) {
+    .serment {
+        width: 750px;
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .serment {
+        width: 970px;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .serment {
+        width: 1140px;
+    }
+}
+
+.serment-section {
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.serment-main {
+    font-size: 16px;
+}
+
+.serment-quote {
+    font-style: italic;
+}
+
+.serment-list-item {
+    font-size: 1em;
+}

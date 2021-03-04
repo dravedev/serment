@@ -4,7 +4,32 @@ layout: default
 ---
 
 <main class="serment">
+  <h1 class="serment-title serment-section text-center">{{ site.data.serment.title }}</h1>
 
-  <h1>HELLO WORLD</h1>
+  <div class="serment-main serment-section">
+      {% for txt in site.data.serment.text %}
+        {% assign first_char = txt | slice: 0 %}
+            {% if  first_char == "<" %}
+                {% assign second_char = txt | slice: 1 %}
+                {% if second_char == "q" %}
+                    {% assign quote_txt = txt | replace: "<q>", '<blockquote class="serment-quote">' | append: "</blockquote>" %}
+                    {{  quote_txt  }}
+                {% elsif second_char == "l" %}
+                    {{ txt | replace: "<li>", '<li class="serment-list-item text-muted">' | append: "</li>" }}
+                {% else %}
+                    {{ txt }}
+                {% endif %}
+            {% else %} 
+                <p class="serment-txt serment-section text-muted">
+                    {{ txt }}
+                </p>
+            {% endif %}
+      {% endfor %}
+  </div>
+
+  <div class="serment-sign serment-section">
+
+  </div>
+
 
 </main>
