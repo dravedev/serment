@@ -21,7 +21,7 @@ layout: default
                 {% endif %}
             {% else %} 
                 <p class="serment-txt serment-section text-muted">
-                    {{ txt }}
+                    {{ txt | remove: ", %NAME%," }}
                 </p>
             {% endif %}
       {% endfor %}
@@ -82,10 +82,10 @@ layout: default
         <div class="modal-body">
             <ol class="pdf-step-list">
                 <li>
-                    <a id="pdf-url" href="#">Téléchargez votre serment signé</a>
+                    <a id="pdf-url" href="#" target="_blank">Téléchargez votre serment signé</a>
                 </li>
                 <li>
-                    <a href="mailto: angdi.chu@coderbunker.ca">Envoyez-nous le pdf</a>
+                    <a href="mailto: angdi.chu@coderbunker.ca">Envoyez-nous le pdf</a> <!-- draveurs@drave.dev -->
                 </li>
                 <li>Attendez la réponse</li>
             </ol>
@@ -95,3 +95,7 @@ layout: default
     </div>
   </div>
 </main>
+
+<script>
+    const sermentTxt = {{ site.data.serment | jsonify }};
+</script>

@@ -1,53 +1,127 @@
-function exportPDF(result, data) {
-
-}
-
 const pdfLinkEL = document.getElementById('pdf-url');
+// console.log(JSON.stringify(sermentTxt))
 
 // create a document and pipe to a blob
-var doc = new PDFDocument();
-var stream = doc.pipe(blobStream());
+const doc = new PDFDocument();
+const stream = doc.pipe(blobStream());
 
-// draw some text
-doc.fontSize(25).text('Here is some vector graphics...', 100, 80);
+function exportPDF(userObj, signatureData) {
+    doc.info.Title = sermentTxt.title;
+    doc.info.Author = 'Drave Développement';
+    doc.info.Subject = 'Contract de membre pour Drave Développement';
 
-// some vector graphics
-doc
-  .save()
-  .moveTo(100, 150)
-  .lineTo(100, 250)
-  .lineTo(200, 250)
-  .fill('#FF3300');
+    doc.fontSize(18)
+        .font('Helvetica-Bold')  // TODO: customize font
+        .text(sermentTxt.title, 76, 76);
 
-doc.circle(280, 200, 50).fill('#6600FF');
+    for (var [index, para] of Object.entries(sermentTxt.text)) {
+        console.log(para);
+        
+        if (para.indexOf('<') !== -1) {
+            if (para.indexOf('<q>') !== -1) {
+                doc.moveDown()
+                    .font('Courier-Oblique')
+                    .list(['« ' + para.slice(3, -1).trim() + '» '], {
+                        align: 'justify',
+                        bulletRadius: 0.1,
+                        bulletIndent: 2,
+                        textIndent: 68,
+                        lineGap: 12,
 
-// an SVG path
-doc
-  .scale(0.6)
-  .translate(470, 130)
-  .path('M 250,75 L 323,301 131,161 369,161 177,301 z')
-  .fill('red', 'even-odd')
-  .restore();
+                    });
+            } else if (para.indexOf('<li>') !== -1) {
+                
+            }
+        } else {  
+            if (para.indexOf('%NAME%') > 0) {
+                para = para.replace('%NAME%', userObj.name);
+            }
+            doc.moveDown()
+                .fontSize(12)
+                .font('Helvetica')
+                .text(para.trim(), {
+                    align: 'justify',
+                    lineGap: 12,
+                    // paragraphGap: 15,
+                });
+        }
+    }
+        
 
-var lorem = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas rutrum interdum augue quis semper. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Vivamus in quam euismod dolor maximus sollicitudin. Vestibulum et vehicula orci, vel placerat magna. Nullam pharetra velit in nunc feugiat tempus. Etiam vel tortor ac sapien luctus tempor quis et mi. Duis ex magna, aliquet in arcu eget, congue scelerisque risus. Vestibulum mattis dui vel dui varius, sed lacinia felis semper. Donec eget neque vel est interdum vestibulum at vitae orci. Praesent fermentum metus non urna volutpat luctus. Suspendisse at ex ac erat auctor euismod. Vestibulum ac vehicula quam. Phasellus pharetra sit amet mi vitae scelerisque.\nAliquam ultrices facilisis posuere. Suspendisse quis hendrerit orci, id tincidunt turpis. Nam vestibulum odio consequat congue maximus. Nulla finibus vehicula lorem nec suscipit. Ut scelerisque pharetra ex ac lobortis. Vivamus vestibulum risus eu magna luctus blandit. Nam ac libero volutpat, fringilla elit a, cursus magna. Sed a ex a leo fringilla varius. Etiam vulputate maximus tempus. Nam tempor lorem nisl, at pellentesque felis vehicula eu. Fusce a odio leo. Morbi viverra quis justo vel tincidunt. Etiam odio ligula, ultrices in ornare quis, finibus ac mauris. Donec nec nibh quis libero rhoncus tincidunt non sit amet enim.";
+
+
+    doc.save();
+
+    // end and display the document in the iframe to the right
+    doc.end();
+}
+
+/*
+doc.info.Title = sermentTxt.title;
+doc.info.Author = 'Drave Développement';
+doc.info.Subject = 'Contract de membre pour Drave Développement';
+
+doc.fontSize(18)
+    .font('Helvetica-Bold')  // TODO: customize font
+    .text(sermentTxt.title, 76, 76);
+
+for (const [index, para] of Object.entries(sermentTxt.text)) {
+    console.log(para);
+    
+    if (para.indexOf('<') !== -1) {
+        if (para.indexOf('<q>') !== -1) {
+            doc.moveDown()
+                .font('Courier-Oblique')
+                .list(['« ' + para.slice(3, -1).trim() + '» '], {
+                    align: 'justify',
+                    bulletRadius: 0.1,
+                    bulletIndent: 2,
+                    textIndent: 68,
+                    lineGap: 12,
+
+                });
+        } else if (para.indexOf('<li>') !== -1) {
+            
+        }
+    } else {  
+        doc.moveDown()
+            .fontSize(12)
+            .font('Helvetica')
+            .text(para.trim(), {
+                align: 'justify',
+                lineGap: 12,
+                // paragraphGap: 15,
+            });
+    }
+}
+      
+
+doc.font('Helvetica')
+    .moveDown()
+    .text();
+*/
+
+    // draw some text
+// doc.fontSize(25).text('Here is some vector graphics...', 100, 80);
+
 
 // and some justified text wrapped into columns
-doc
-  .text('And here is some wrapped text...', 100, 300)
-  .font('Times-Roman', 13)
-  .moveDown()
-  .text(lorem, {
-    width: 412,
-    align: 'justify',
-    indent: 30,
-    columns: 2,
-    height: 300,
-    ellipsis: true
-  });
+// doc
+//   .text('And here is some wrapped text...', 100, 300)
+//   .font('Times-Roman', 13)
+//   .moveDown()
+//   .text(sermentTxt.text.join('\n'), {
+//     width: 412,
+//     align: 'justify',
+//     indent: 30,
+//     columns: 2,
+//     height: 300,
+//     ellipsis: true
+//   });
 
 // end and display the document in the iframe to the right
-doc.end();
+// doc.end();
 stream.on('finish', function() {
-    const url = stream.toBlobURL('output/pdf');
+    const url = stream.toBlobURL('application/pdf');
     pdfLinkEL.setAttribute('href', url);
 });

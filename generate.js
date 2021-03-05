@@ -1,3 +1,17 @@
+var sermentTxt = {
+    "title":"Le Serment du Draveur-se",
+    "text":[
+       "Je souscris aux valeurs de Liberté, d’Égalité et de Fraternité de la communauté Drave Développement. Je défendrai les intérêts, la sécurité et la prospérité de cette communauté et de chacun de ses membres, sur l’aspect souveraineté numérique pour le Québec, ainsi que pour leurs activités en accord avec ces valeurs. ",
+       "J'adhère de tout cœur et sans réserve à la mission des draveurs et des draveuses, dont je vais en faire la promotion: ",
+       "<q>Nous voulons permettre à tous de se mettre au service du Québec, pour répondre aux besoins de notre société et créer la prospérité, grâce à la collaboration éthique et transparente sur les logiciels libres, les données ouvertes et tout autre commun numérique pour la souveraineté numérique.",
+       "Un(e) draveur(se) peut se voir perdre son statut si: ",
+       "<ul>",
+       "<li>il agit en contradiction avec les principes de l’organisation",
+       "<li>il cause des torts à la communauté des draveur·se·s ou aux membres qui la compose",
+       "</ul>"
+    ]
+ }; 
+
 const PDFDocument = require('pdfkit');
 const fs = require('fs');
 

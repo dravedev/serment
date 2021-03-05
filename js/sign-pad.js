@@ -67,8 +67,9 @@ document.getElementById('sign').addEventListener('click', function (e) {
         document.getElementById('hint-sign').classList.add('hidden');
 
         openSuccessModal();
-        //TODO: 
-        // exportPDF(resultObj, data);
+
+        // TODO: 
+        exportPDF(resultObj, data);
     }
 
     console.log(data, resultObj);
