@@ -112,7 +112,7 @@ body {
 
 .pdf-modal-panel {
     width: 400px;
-    max-width: 100vw;
+    max-width: calc(100vw - 20px);
 }
 
 .pdf-step-list {
