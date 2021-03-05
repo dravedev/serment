@@ -1,3 +1,33 @@
+let ifModalPop = true;
+
+const btnSignPopup = document.getElementById('btn-sign-popup');
+const inputName = document.querySelector('.input-name');
+const inputEmail = document.querySelector('.input-email');
+const inputCity = document.querySelector('.input-city');
+
+let resultObj = {};
+
+btnSignPopup.addEventListener('click', function(e) {
+    const name = $.trim(inputName.value);
+    const email = $.trim(inputEmail.value);
+    const city = $.trim(inputCity.value);
+
+    const checkNameResult = visualizeValidation('name', name, inputName);
+    const checkEmailResult = visualizeValidation('email', email, inputEmail);
+    const checkCityResult = visualizeValidation('city', city, inputCity);
+
+    if (checkNameResult != 1 || checkEmailResult != 1 || checkCityResult != 1) {
+        ifModalPop = false;
+    } else {
+        ifModalPop = true;
+        resultObj.name = name
+        resultObj.email = email
+        resultObj.city =city
+    }
+
+    // console.log(resultObj);
+});
+
 const canvas = document.querySelector('canvas');
 var parentWidth = $(canvas).parent().outerWidth();
 canvas.setAttribute("width", parentWidth);
@@ -29,7 +59,7 @@ document.getElementById('clear').addEventListener('click', function () {
 
 document.getElementById('sign').addEventListener('click', function () {
     const data = signaturePad.toData();
-    // console.log(data);
+    console.log(data, resultObj);
 });
 
 
@@ -43,3 +73,9 @@ $('.serment-sign-modal').on('hide.bs.modal', function (e) {
     // console.log(signaturePad.toData());
 })
 
+$('.serment-sign-modal').on('show.bs.modal', function (e) {
+    console.log(ifModalPop)
+    if (!ifModalPop) {
+        return e.preventDefault(); 
+    }
+})
