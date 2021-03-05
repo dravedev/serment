@@ -65,25 +65,37 @@ document.getElementById('sign').addEventListener('click', function (e) {
         e.preventDefault();
     } else {
         document.getElementById('hint-sign').classList.add('hidden');
+
+        openSuccessModal();
+        //TODO: 
+        // exportPDF(resultObj, data);
     }
+
     console.log(data, resultObj);
 });
 
+const signModalJQ = $('.serment-sign-modal');
+const pdfModalJQ = $('.pdf-modal');
 
-$('.serment-sign-modal').on('shown.bs.modal', function (e) {
+signModalJQ.on('shown.bs.modal', function (e) {
     resizeCanvas();
     // console.log(canvas.width, canvas.height)
 })
 
-$('.serment-sign-modal').on('hide.bs.modal', function (e) {
+signModalJQ.on('hide.bs.modal', function (e) {
     signaturePad.clear();
     document.getElementById('hint-sign').classList.add('hidden');
     // console.log(signaturePad.toData());
 })
 
-$('.serment-sign-modal').on('show.bs.modal', function (e) {
+signModalJQ.on('show.bs.modal', function (e) {
     // console.log(ifModalPop)
     if (!ifModalPop) {
         return e.preventDefault(); 
     }
 })
+
+function openSuccessModal() {
+    signModalJQ.modal('hide');
+    pdfModalJQ.modal('show');
+}

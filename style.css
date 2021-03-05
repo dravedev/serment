@@ -109,3 +109,21 @@ body {
 #hint-sign {
     text-align: left;
 }
+
+.pdf-modal-panel {
+    width: 400px;
+}
+
+.pdf-step-list {
+    margin: 0;
+}
+
+.pdf-step-list li {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.pdf-step-list a {
+    color: #B04E00;
+    text-decoration: underline;
+}
