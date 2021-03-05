@@ -27,9 +27,43 @@ layout: default
       {% endfor %}
   </div>
 
-  <div class="serment-sign serment-section">
+  <form class="serment-sign serment-section">
+    <div class="row">
+        <div class="col-sm-12 col-md-4 has-feedback form-input">
+            <input type="text" class="form-control" placeholder="Nom">
+        </div>
+        <div class="col-sm-12 col-md-4 has-feedback form-input">
+            <input type="email" class="form-control" placeholder="Courriel">
+        </div>
+        <div class="col-sm-12 col-md-4 has-feedback form-input">
+            <input type="text" class="form-control" placeholder="Lieu">
+        </div>
+    </div>
+    <div class="serment-sign-button row text-center">
+        <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target=".serment-sign-modal">Signez le serment!</button>
+    </div>
+  </form>
 
+  <div class="serment-sign-modal modal fade" tabindex="-1" role="dialog" aria-labelledby="signModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="serment-sign-pad modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Annulez</span></button>
+            <h4 class="modal-title text-muted">Signez ma signature</h4>
+        </div>
+        <div class="modal-body">
+          <div class="signature-pad-wrapper">
+            <canvas id="signature-pad" class="signature-pad"></canvas>
+          </div>
+        </div>
+        <div class="serment-sign-modal-footer modal-footer">
+          <div class="pad-control">
+            <button type="button" class="btn btn-info pull-left" id="clear">Effacez</button>
+          </div>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Annulez</button>
+          <button type="button" class="btn btn-primary" id="sign">Soumettez</button>
+        </div>
+    </div>
+    </div>
   </div>
-
-
 </main>

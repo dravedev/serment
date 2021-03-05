@@ -13,6 +13,20 @@ body {
 @media screen and (max-width: 768px) {
     .serment {
         margin: auto 15px;
+        width: calc(100vw - 15px * 2);
+    }
+
+    .serment-sign {
+        width: 100%;
+    }
+
+    .serment-sign-button {
+        width: 100%;
+    }
+
+    .serment-sign-button button {
+        width: 100%;
+        margin: 20px auto;
     }
 }
 
@@ -20,6 +34,11 @@ body {
 @media screen and (min-width: 768px) {
     .serment {
         width: 750px;
+    }
+
+    .serment-sign-button button {
+        width: 200px;
+        margin: 20px auto;
     }
 }
 
@@ -50,4 +69,33 @@ body {
 
 .serment-list-item {
     font-size: 1em;
+}
+
+.form-input {
+    magin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.serment-sign {
+    padding-top: 20px;
+}
+
+.serment-sign-button {
+    margin: 20px auto;
+}
+
+.signature-pad {
+    width: 400px;
+    height: 200px;
+    background-color: white;
+}
+
+.serment-sign-modal-footer button {
+    font-family: "Lato","Helvetica Neue",Helvetica,Arial,sans-serif;;
+    font-weight: normal;
+}
+
+.close {
+    color: #000;
+    text-shadow: 0 1px 0 #fff;
 }
