@@ -40,7 +40,7 @@ function resizeCanvas() {
     // some browsers report devicePixelRatio as less than 1
     // and only part of the canvas is cleared then.
     var ratio =  Math.max(window.devicePixelRatio || 1, 1);
-    console.log(canvas.width, canvas.height)
+    // console.log(canvas.width, canvas.height)
     canvas.width = canvas.offsetWidth * ratio;
     canvas.height = canvas.offsetHeight * ratio;
     canvas.getContext('2d').scale(ratio, ratio);
@@ -54,11 +54,18 @@ resizeCanvas();
 var signaturePad = new SignaturePad(canvas);
 
 document.getElementById('clear').addEventListener('click', function () {
+    document.getElementById('hint-sign').classList.add('hidden');
     signaturePad.clear();
 });
 
-document.getElementById('sign').addEventListener('click', function () {
+document.getElementById('sign').addEventListener('click', function (e) {
     const data = signaturePad.toData();
+    if (data.length === 0) {    // no signature
+        document.getElementById('hint-sign').classList.remove('hidden');
+        e.preventDefault();
+    } else {
+        document.getElementById('hint-sign').classList.add('hidden');
+    }
     console.log(data, resultObj);
 });
 
@@ -70,11 +77,12 @@ $('.serment-sign-modal').on('shown.bs.modal', function (e) {
 
 $('.serment-sign-modal').on('hide.bs.modal', function (e) {
     signaturePad.clear();
+    document.getElementById('hint-sign').classList.add('hidden');
     // console.log(signaturePad.toData());
 })
 
 $('.serment-sign-modal').on('show.bs.modal', function (e) {
-    console.log(ifModalPop)
+    // console.log(ifModalPop)
     if (!ifModalPop) {
         return e.preventDefault(); 
     }

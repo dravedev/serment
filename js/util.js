@@ -16,18 +16,26 @@ function checkInput(value, type) {
 }
 
 function visualizeValidation(name, value, inputEl) {
+    const warningHintEl = inputEl.nextElementSibling;
+
     switch (checkInput(value, name)) {
         case 1:
             inputEl.parentElement.classList.add('has-success');
             inputEl.parentElement.classList.remove('has-error');
+            warningHintEl.classList.add('hidden');
+
             return 1
         case 0:
             inputEl.parentElement.classList.add('has-error');
             inputEl.parentElement.classList.remove('has-success');
+            warningHintEl.classList.remove('hidden');
+
             return 0;
         case -1:
             inputEl.parentElement.classList.add('has-error');            
-            inputEl.parentElement.classList.remove('has-success');
+            inputEl.parentElement.classList.remove('has-success');            
+            warningHintEl.classList.remove('hidden');
+
             return -1;
     }
 }
