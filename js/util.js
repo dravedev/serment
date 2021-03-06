@@ -39,3 +39,32 @@ function visualizeValidation(name, value, inputEl) {
             return -1;
     }
 }
+
+function getImgBuffer(canvas) {
+    ctxData = canvas.toDataURL('image/png').slice('data:image/png;base64,'.length);
+    ctxData = atob(ctxData);  // decrypt
+    
+    var buffer = [];
+    for (var i = 0, l = ctxData.length; i < l; i++) {
+        buffer.push(ctxData.charCodeAt(i));
+        buffer._isBuffer = true;
+        buffer.readUInt16BE = function (offset, noAssert) {
+            var len = this.length;
+            if (offset >= len) return;
+
+            var val = this[offset] << 8;
+            if (offset + 1 < len)
+                val |= this[offset + 1];
+            return val;
+        }
+    }
+
+}
+
+function formatDate2YYMMDD(date) {
+    return date.getFullYear() + '-' + oneDigits2Two(date.getMonth()) + '-' + oneDigits2Two(date.getDate());
+}
+
+function oneDigits2Two(number) {
+    return ("0" + number).slice(-2);
+}

@@ -60,6 +60,11 @@ document.getElementById('clear').addEventListener('click', function () {
 
 document.getElementById('sign').addEventListener('click', function (e) {
     const data = signaturePad.toData();
+
+    const dataBuffer = getImgBuffer(canvas);
+
+    const signPng = signaturePad.toDataURL('image/png');
+
     if (data.length === 0) {    // no signature
         document.getElementById('hint-sign').classList.remove('hidden');
         e.preventDefault();
@@ -69,7 +74,7 @@ document.getElementById('sign').addEventListener('click', function (e) {
         openSuccessModal();
 
         // TODO: 
-        exportPDF(resultObj, data);
+        exportPDF(resultObj, signPng);
     }
 
     console.log(data, resultObj);
