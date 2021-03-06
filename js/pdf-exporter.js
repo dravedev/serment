@@ -79,7 +79,7 @@ function exportPDF(userObj, signPng) {
         .text('. ', {
             underline: false, 
         })
-        .text(userObj.name);
+        .text(userObj.name + ' (' + userObj.email + ')');
 
     var xhr = new XMLHttpRequest;
     xhr.onload = function() {
