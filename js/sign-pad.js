@@ -73,7 +73,6 @@ document.getElementById('sign').addEventListener('click', function (e) {
 
         openSuccessModal();
 
-        // TODO: 
         exportPDF(resultObj, signPng);
     }
 
@@ -105,3 +104,28 @@ function openSuccessModal() {
     signModalJQ.modal('hide');
     pdfModalJQ.modal('show');
 }
+
+$('#btn-close-final-modal').on('click', function(e) {
+    $(".alert").show('fade');
+    $('.pdf-modal').bind('hide.bs.modal', preventDefault);
+});
+
+$('.pdf-modal').on('hidden.bs.modal', function(e) {
+    $(".alert").hide('hide');
+});
+
+$('#btn-alert-close').on('click', function(e) {
+    $('.pdf-modal').unbind('hide.bs.modal', preventDefault);
+    $('.pdf-modal').modal('hide');
+});
+
+$('#btn-alert-cancel').on('click', function(e) {
+    $(".alert").hide('hide');
+});
+
+function preventDefault(e) {
+    e.preventDefault();
+}
+$('.pdf-modal').on('hidden.bs.modal', function(e) {
+        $(".alert").hide('hide');
+    });

@@ -72,14 +72,20 @@ layout: default
     </div>
   </div>
 
-  <div class="pdf-modal modal fade" tabindex="-1" role="dialog" aria-labelledby="pdfModalLabel" aria-hidden="true">
+  <div class="pdf-modal modal fade" tabindex="-1" role="dialog" aria-labelledby="pdfModalLabel" aria-hidden="true" data-backdrop="static">
     <div class="pdf-modal-panel modal-dialog modal-sm">
       <div class="modal-content">
         <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Annulez</span></button>
+            <button type="button" class="close" data-dismiss="modal" id="btn-close-final-modal"><span aria-hidden="true">&times;</span><span class="sr-only">Annulez</span></button>
             <h4 class="modal-title text-muted">Encore un pas</h4>
         </div>
         <div class="modal-body">
+            <div class="alert alert-warning collapse" role="alert">
+                <h4 class="text-muted">Attention! </h4> 
+                <p>Si vous fermez cette fenêtre, vous allez vous reconnecter. Continuer à fermer?</p>
+                <button id="btn-alert-close" type="button" class="btn btn-primary">Oui, fermer</button>
+                <button id="btn-alert-cancel"" type="button" class="btn btn-default">Non</button>
+            </div>
             <ol class="pdf-step-list">
                 <li>
                     <a id="pdf-url" href="#" target="_blank">Téléchargez votre serment signé</a>
