@@ -36,7 +36,7 @@ function exportPDF(userObj, signPng) {
             } else if (para.indexOf('<li>') !== -1) {
                 doc.moveDown()
                     .font('Helvetica')
-                    .list([para.slice(4, -1).trim()], {
+                    .list([para.slice(4).trim()], {
                         align: 'justify',
                         bulletRadius: 2,
                         bulletIndent: 10,
