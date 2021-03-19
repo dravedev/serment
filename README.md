@@ -1,3 +1,4 @@
+voir https://serment.draveur.dev
 
 ## what is it
 
