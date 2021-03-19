@@ -1,4 +1,4 @@
-voir https://serment.draveur.dev
+voir https://serment.drave.dev
 
 ## what is it
 
