@@ -9,8 +9,8 @@ $(function() {
             event.preventDefault(); // prevent default submit behaviour
             var name = $("input#name").val();
             document.location.href = "mailto:draveurs@drave.dev?subject="
-        + encodeURIComponent("J'embarque avec Drave Développment")
-        + "&body=" + encodeURIComponent("Bonjour, \n\nJe suis (...) \n\nJe voudrais participer à Drave Développment pour (...)\n\nAu plaisir de collaborer avec vous!\n\n"+ name);
+        + encodeURIComponent("J'embarque avec Drave Développement")
+        + "&body=" + encodeURIComponent("Bonjour, \n\nJe suis (...) \n\nJe voudrais participer à Drave Développement pour (...)\n\nAu plaisir de collaborer avec vous!\n\n"+ name);
 
         },
         filter: function() {
